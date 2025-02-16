@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb+srv://shreesha:Jb4fJ4b1wyEdR9Ni@cluster0.v0uri.mongodb.net/
+      - DATABASE_NAME=event_trigger_platform
+    env_file:
+      - .env
+
+volumes:
+  mongodb_data: 

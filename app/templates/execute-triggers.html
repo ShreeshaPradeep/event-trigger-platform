@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Execute API Triggers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Copy all styles from index.html here */
+        :root {
+            --primary-color: #2196F3;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --error-color: #F44336;
+            --text-color: #333;
+            --border-color: #ddd;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trigger-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 4px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background-color: #757575;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Execute API Triggers</h1>
+        <button onclick="window.location.href='index.html'">Back to Main</button>
+    </div>
+
+    <div class="container">
+        <div id="apiTriggersList">
+            <!-- API triggers will be loaded here -->
+        </div>
+    </div>
+
+    <div id="executionModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Execute API Trigger</h3>
+            <div id="triggerDetails"></div>
+            <div class="form-group">
+                <label>Payload:</label>
+                <textarea id="executionPayload" rows="4"></textarea>
+            </div>
+            <div style="margin-top: 1rem;">
+                <button onclick="executeSelectedTrigger()">Execute</button>
+                <button class="secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000/api/v1';
+        
+        async function loadApiTriggers() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/triggers`);
+                const triggers = await response.json();
+                const apiTriggers = triggers.filter(t => t.trigger_type === 'api');
+                
+                const triggersList = document.getElementById('apiTriggersList');
+                triggersList.innerHTML = apiTriggers.map(trigger => `
+                    <div class="trigger-card">
+                        <h3>${trigger.name}</h3>
+                        <p>${trigger.description || 'No description'}</p>
+                        <div class="trigger-details">
+                            <p><strong>Endpoint:</strong> ${trigger.api_config.endpoint}</p>
+                            <p><strong>Method:</strong> ${trigger.api_config.method}</p>
+                            <p><strong>Expected Payload:</strong></p>
+                            <pre>${JSON.stringify(trigger.api_config.payload_schema, null, 2)}</pre>
+                        </div>
+                        <button onclick='showExecutionModal("${trigger.id}", ${JSON.stringify(trigger)})'>
+                            Execute
+                        </button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading triggers:', error);
+            }
+        }
+
+        function showExecutionModal(triggerId, trigger) {
+            const modal = document.getElementById('executionModal');
+            const details = document.getElementById('triggerDetails');
+            
+            // Validate endpoint URL
+            let endpointUrl;
+            try {
+                endpointUrl = new URL(trigger.api_config.endpoint);
+            } catch (error) {
+                alert('Invalid endpoint URL in trigger configuration. Please update the trigger with a valid URL.');
+                return;
+            }
+            
+            const samplePayload = JSON.stringify(trigger.api_config.payload_schema, null, 2);
+            
+            details.innerHTML = `
+                <p><strong>Trigger:</strong> ${trigger.name}</p>
+                <p><strong>Endpoint:</strong> ${trigger.api_config.endpoint}</p>
+                <p><strong>Method:</strong> ${trigger.api_config.method}</p>
+                <p><strong>Expected Payload Schema:</strong></p>
+                <pre>${samplePayload}</pre>
+            `;
+            
+            // Pre-fill the payload textarea with a formatted sample
+            document.getElementById('executionPayload').value = samplePayload;
+            
+            modal.classList.remove('hidden');
+            modal.dataset.triggerId = triggerId;
+        }
+
+        async function executeSelectedTrigger() {
+            const modal = document.getElementById('executionModal');
+            const triggerId = modal.dataset.triggerId;
+            let payload;
+
+            try {
+                // Validate JSON payload
+                payload = JSON.parse(document.getElementById('executionPayload').value);
+            } catch (error) {
+                alert('Invalid JSON payload. Please check your input.');
+                return;
+            }
+
+            try {
+                // First, get the trigger details
+                const triggerResponse = await fetch(`${API_BASE_URL}/triggers/${triggerId}`);
+                const trigger = await triggerResponse.json();
+                
+                console.log('Executing trigger:', {
+                    triggerId,
+                    triggerDetails: trigger,
+                    payload
+                });
+
+                // Execute the trigger - send only the payload
+                const response = await fetch(`${API_BASE_URL}/triggers/${triggerId}/execute`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)  // Send just the payload without wrapping
+                });
+
+                const responseData = await response.json();
+                console.log('Response:', responseData);
+
+                if (response.ok) {
+                    alert('Trigger executed successfully!');
+                    closeModal();
+                } else {
+                    alert(`Error: ${responseData.detail || 'Failed to execute trigger'}`);
+                }
+            } catch (error) {
+                console.error('Execution error:', error);
+                alert(`Error executing trigger: ${error.message}`);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('executionModal').classList.add('hidden');
+            document.getElementById('executionPayload').value = '';
+        }
+
+        // Load triggers when page loads
+        document.addEventListener('DOMContentLoaded', loadApiTriggers);
+    </script>
+</body>
+</html> 

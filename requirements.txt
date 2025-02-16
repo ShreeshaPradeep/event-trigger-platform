@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+motor
+pymongo[srv]
+dnspython
+apscheduler
+python-dotenv
+pydantic

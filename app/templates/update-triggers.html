@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Triggers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Matching styles from index.html */
+        :root {
+            --primary-color: #2196F3;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --error-color: #F44336;
+            --text-color: #333;
+            --border-color: #ddd;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trigger-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .trigger-type-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .badge-api {
+            background-color: var(--warning-color);
+            color: #000;
+        }
+
+        .badge-scheduled {
+            background-color: var(--success-color);
+            color: #fff;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 4px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+
+        button.secondary {
+            background-color: #757575;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Update Triggers</h1>
+        <button onclick="window.location.href='index.html'">Back to Main</button>
+    </div>
+
+    <div class="container">
+        <div id="triggersList">
+            <!-- Triggers will be loaded here -->
+        </div>
+    </div>
+
+    <div id="updateModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Update Trigger</h3>
+            <form id="updateForm">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="updateName" required>
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea id="updateDescription" rows="2"></textarea>
+                </div>
+                
+                <!-- Schedule-specific fields -->
+                <div id="scheduleFields" class="hidden">
+                    <div class="form-group">
+                        <label>Schedule Type:</label>
+                        <select id="updateScheduleType">
+                            <option value="one_time">One Time</option>
+                            <option value="recurring">Recurring</option>
+                        </select>
+                    </div>
+                    <div id="oneTimeFields">
+                        <div class="form-group">
+                            <label>Execution Date & Time:</label>
+                            <input type="datetime-local" id="updateDateTime">
+                        </div>
+                    </div>
+                    <div id="recurringFields" class="hidden">
+                        <div class="form-group">
+                            <label>Interval Type:</label>
+                            <select id="updateIntervalType">
+                                <option value="minutes">Minutes</option>
+                                <option value="hours">Hours</option>
+                                <option value="days">Days</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Interval Value:</label>
+                            <input type="number" id="updateIntervalValue" min="5">
+                            <small>Minimum: 5 minutes, 1 hour, or 1 day</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API-specific fields -->
+                <div id="apiFields" class="hidden">
+                    <div class="form-group">
+                        <label>Endpoint URL:</label>
+                        <input type="url" id="updateEndpoint">
+                    </div>
+                    <div class="form-group">
+                        <label>Method:</label>
+                        <select id="updateMethod">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Payload Schema (JSON):</label>
+                        <textarea id="updatePayloadSchema" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <button type="submit">Update Trigger</button>
+                    <button type="button" class="secondary" onclick="closeUpdateModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000/api/v1';
+        
+        async function loadTriggers() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/triggers`);
+                const triggers = await response.json();
+                
+                const triggersList = document.getElementById('triggersList');
+                triggersList.innerHTML = triggers.map(trigger => `
+                    <div class="trigger-card">
+                        <h3>
+                            ${trigger.name}
+                            <span class="trigger-type-badge badge-${trigger.trigger_type}">
+                                ${trigger.trigger_type.toUpperCase()}
+                            </span>
+                        </h3>
+                        <p>${trigger.description || 'No description'}</p>
+                        <div class="trigger-details">
+                            ${trigger.trigger_type === 'api' ? 
+                                `<p><strong>Endpoint:</strong> ${trigger.api_config.endpoint}</p>
+                                 <p><strong>Method:</strong> ${trigger.api_config.method}</p>` :
+                                `<p><strong>Schedule:</strong> ${getScheduleDescription(trigger.schedule_config)}</p>`
+                            }
+                        </div>
+                        <button onclick='showUpdateModal("${trigger.id}", ${JSON.stringify(trigger)})'>
+                            Update
+                        </button>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading triggers:', error);
+            }
+        }
+
+        async function updateTrigger(triggerId, triggerType) {
+            try {
+                const updateData = {
+                    name: document.getElementById('updateName').value,
+                    description: document.getElementById('updateDescription').value
+                };
+
+                // Handle different trigger types
+                if (triggerType === 'scheduled') {
+                    const scheduleType = document.getElementById('updateScheduleType').value;
+                    updateData.schedule_config = {
+                        schedule_type: scheduleType
+                    };
+
+                    if (scheduleType === 'one_time') {
+                        updateData.schedule_config.specific_date = document.getElementById('updateDateTime').value;
+                    } else {
+                        // Recurring schedule
+                        updateData.schedule_config.interval_type = document.getElementById('updateIntervalType').value;
+                        updateData.schedule_config.interval_value = parseInt(document.getElementById('updateIntervalValue').value);
+                    }
+                } else if (triggerType === 'api') {
+                    updateData.api_config = {
+                        endpoint: document.getElementById('updateEndpoint').value,
+                        method: document.getElementById('updateMethod').value,
+                        payload_schema: JSON.parse(document.getElementById('updatePayloadSchema').value)
+                    };
+                }
+
+                console.log('Updating trigger with data:', updateData);
+
+                const response = await fetch(`${API_BASE_URL}/triggers/${triggerId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updateData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Failed to update trigger');
+                }
+
+                const result = await response.json();
+                console.log('Update result:', result);
+                alert('Trigger updated successfully!');
+                closeUpdateModal();
+                loadTriggers(); // Refresh the list
+            } catch (error) {
+                console.error('Update error:', error);
+                alert(`Failed to update trigger: ${error.message}`);
+            }
+        }
+
+        function showUpdateModal(triggerId, trigger) {
+            const modal = document.getElementById('updateModal');
+            modal.dataset.triggerId = triggerId;
+            modal.dataset.triggerType = trigger.trigger_type;
+
+            // Fill in basic fields
+            document.getElementById('updateName').value = trigger.name;
+            document.getElementById('updateDescription').value = trigger.description || '';
+
+            // Show/hide appropriate fields
+            const scheduleFields = document.getElementById('scheduleFields');
+            const apiFields = document.getElementById('apiFields');
+
+            if (trigger.trigger_type === 'scheduled') {
+                scheduleFields.classList.remove('hidden');
+                apiFields.classList.add('hidden');
+
+                const scheduleConfig = trigger.schedule_config;
+                document.getElementById('updateScheduleType').value = scheduleConfig.schedule_type;
+
+                if (scheduleConfig.schedule_type === 'one_time') {
+                    document.getElementById('oneTimeFields').classList.remove('hidden');
+                    document.getElementById('recurringFields').classList.add('hidden');
+                    document.getElementById('updateDateTime').value = scheduleConfig.specific_date;
+                } else {
+                    document.getElementById('oneTimeFields').classList.add('hidden');
+                    document.getElementById('recurringFields').classList.remove('hidden');
+                    document.getElementById('updateIntervalType').value = scheduleConfig.interval_type || 'minutes';
+                    document.getElementById('updateIntervalValue').value = scheduleConfig.interval_value || '';
+                }
+            } else {
+                scheduleFields.classList.add('hidden');
+                apiFields.classList.remove('hidden');
+
+                const apiConfig = trigger.api_config;
+                document.getElementById('updateEndpoint').value = apiConfig.endpoint;
+                document.getElementById('updateMethod').value = apiConfig.method;
+                document.getElementById('updatePayloadSchema').value = 
+                    JSON.stringify(apiConfig.payload_schema, null, 2);
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        // Add schedule type change handler
+        document.getElementById('updateScheduleType').addEventListener('change', function() {
+            const oneTimeFields = document.getElementById('oneTimeFields');
+            const recurringFields = document.getElementById('recurringFields');
+
+            if (this.value === 'one_time') {
+                oneTimeFields.classList.remove('hidden');
+                recurringFields.classList.add('hidden');
+            } else {
+                oneTimeFields.classList.add('hidden');
+                recurringFields.classList.remove('hidden');
+            }
+        });
+
+        // Update the form submission handler
+        document.getElementById('updateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const modal = document.getElementById('updateModal');
+            const triggerId = modal.dataset.triggerId;
+            const triggerType = modal.dataset.triggerType;
+            await updateTrigger(triggerId, triggerType);
+        });
+
+        function closeUpdateModal() {
+            document.getElementById('updateModal').classList.add('hidden');
+        }
+
+        function getScheduleDescription(config) {
+            if (config.schedule_type === 'one_time') {
+                return `One-time at ${new Date(config.specific_date).toLocaleString()}`;
+            } else {
+                return `Every ${config.interval_value} ${config.interval_type}`;
+            }
+        }
+
+        // Load triggers when page loads
+        document.addEventListener('DOMContentLoaded', loadTriggers);
+    </script>
+</body>
+</html> 

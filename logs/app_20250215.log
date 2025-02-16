@@ -1,0 +1,339 @@
+2025-02-15 19:45:01,678 - root - INFO - Connected to MongoDB
+2025-02-15 19:45:01,681 - root - INFO - Connected to MongoDB
+2025-02-15 19:45:01,693 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:45:01,694 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:45:01,700 - root - INFO - Database indexes created successfully
+2025-02-15 19:45:01,700 - root - INFO - Database indexes created successfully
+2025-02-15 19:45:01,700 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:01,701 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:01,701 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:01,701 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:45:01,705 - root - INFO - Application started successfully
+2025-02-15 19:45:01,705 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:45:01,707 - root - INFO - Application started successfully
+2025-02-15 19:45:02,070 - root - INFO - Connected to MongoDB
+2025-02-15 19:45:02,078 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:45:02,083 - root - INFO - Database indexes created successfully
+2025-02-15 19:45:02,085 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:02,085 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:45:02,087 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:45:02,088 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:45:02,088 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:45:02,088 - root - INFO - Application started successfully
+2025-02-15 19:45:06,649 - root - INFO - Closed MongoDB connection
+2025-02-15 19:45:06,649 - root - INFO - Application shutdown complete
+2025-02-15 19:46:17,672 - root - INFO - Connected to MongoDB
+2025-02-15 19:46:17,701 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:46:17,705 - root - INFO - Database indexes created successfully
+2025-02-15 19:46:17,706 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:46:17,706 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:46:17,708 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:46:17,709 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:46:17,709 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:46:17,709 - root - INFO - Application started successfully
+2025-02-15 19:47:48,211 - apscheduler.scheduler - INFO - Added job "execute_scheduled_trigger" to job store "default"
+2025-02-15 19:47:48,215 - apscheduler.scheduler - INFO - Added job "cleanup_trigger" to job store "default"
+2025-02-15 19:48:00,861 - apscheduler.scheduler - INFO - Added job "execute_scheduled_trigger" to job store "default"
+2025-02-15 19:48:00,862 - apscheduler.scheduler - INFO - Added job "cleanup_trigger" to job store "default"
+2025-02-15 19:48:11,046 - apscheduler.scheduler - INFO - Added job "execute_scheduled_trigger" to job store "default"
+2025-02-15 19:48:17,755 - apscheduler.scheduler - INFO - Added job "execute_scheduled_trigger" to job store "default"
+2025-02-15 19:48:45,464 - apscheduler.scheduler - INFO - Added job "execute_scheduled_trigger" to job store "default"
+2025-02-15 19:48:45,465 - apscheduler.scheduler - INFO - Added job "cleanup_trigger" to job store "default"
+2025-02-15 19:48:57,654 - httpx - INFO - HTTP Request: POST https://httpbin.org/post "HTTP/1.1 200 OK"
+2025-02-15 19:49:44,628 - root - ERROR - Error deleting trigger: 
+2025-02-15 19:50:50,811 - root - INFO - Trigger 67b0a234baf0abc10a632674 updated successfully
+2025-02-15 19:51:27,334 - root - INFO - Trigger 67b0a245baf0abc10a632675 updated successfully
+2025-02-15 19:53:00,889 - apscheduler.scheduler - INFO - Removed job 67b0a218baf0abc10a632671_permanent
+2025-02-15 19:53:00,898 - apscheduler.executors.default - INFO - Running job "execute_scheduled_trigger (trigger: date[2025-02-15 14:23:00 UTC], next run at: 2025-02-15 14:23:00 UTC)" (scheduled at 2025-02-15 14:23:00.861806+00:00)
+2025-02-15 19:53:00,900 - app.utils.logger - INFO - Executing scheduled trigger: 67b0a218baf0abc10a632671
+2025-02-15 19:53:00,904 - app.utils.logger - INFO - Successfully executed trigger: 67b0a218baf0abc10a632671
+2025-02-15 19:53:00,904 - apscheduler.executors.default - INFO - Job "execute_scheduled_trigger (trigger: date[2025-02-15 14:23:00 UTC], next run at: 2025-02-15 14:23:00 UTC)" executed successfully
+2025-02-15 19:53:22,340 - root - ERROR - Error executing trigger: name 'logging' is not defined
+2025-02-15 19:53:45,477 - apscheduler.scheduler - INFO - Removed job 67b0a245baf0abc10a632675_test
+2025-02-15 19:53:45,477 - apscheduler.executors.default - INFO - Running job "execute_scheduled_trigger (trigger: date[2025-02-15 14:23:45 UTC], next run at: 2025-02-15 14:23:45 UTC)" (scheduled at 2025-02-15 14:23:45.464383+00:00)
+2025-02-15 19:53:45,479 - app.utils.logger - INFO - Executing scheduled trigger: 67b0a245baf0abc10a632675
+2025-02-15 19:53:45,479 - app.utils.logger - INFO - Successfully executed trigger: 67b0a245baf0abc10a632675
+2025-02-15 19:53:45,481 - apscheduler.executors.default - INFO - Job "execute_scheduled_trigger (trigger: date[2025-02-15 14:23:45 UTC], next run at: 2025-02-15 14:23:45 UTC)" executed successfully
+2025-02-15 19:54:00,865 - apscheduler.scheduler - INFO - Removed job 67b0a218baf0abc10a632671_cleanup
+2025-02-15 19:54:00,865 - apscheduler.executors.default - INFO - Running job "cleanup_trigger (trigger: date[2025-02-15 14:24:00 UTC], next run at: 2025-02-15 14:24:00 UTC)" (scheduled at 2025-02-15 14:24:00.861806+00:00)
+2025-02-15 19:54:00,923 - apscheduler.executors.default - ERROR - Job "cleanup_trigger (trigger: date[2025-02-15 14:24:00 UTC], next run at: 2025-02-15 14:24:00 UTC)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\app\utils\scheduler.py", line 113, in cleanup_trigger
+    logging.info(f"Cleaned up trigger {trigger_id}")
+    ^^^^^^^
+NameError: name 'logging' is not defined. Did you forget to import 'logging'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\app\utils\scheduler.py", line 115, in cleanup_trigger
+    logging.error(f"Error cleaning up trigger {trigger_id}: {str(e)}")
+    ^^^^^^^
+NameError: name 'logging' is not defined. Did you forget to import 'logging'
+2025-02-15 19:54:03,542 - httpx - INFO - HTTP Request: POST https://httpbin.org/post "HTTP/1.1 200 OK"
+2025-02-15 19:54:40,062 - httpx - INFO - HTTP Request: POST https://httpbin.org/post "HTTP/1.1 200 OK"
+2025-02-15 19:54:45,466 - apscheduler.scheduler - INFO - Removed job 67b0a245baf0abc10a632675_cleanup
+2025-02-15 19:54:45,466 - apscheduler.executors.default - INFO - Running job "cleanup_trigger (trigger: date[2025-02-15 14:24:45 UTC], next run at: 2025-02-15 14:24:45 UTC)" (scheduled at 2025-02-15 14:24:45.464383+00:00)
+2025-02-15 19:54:45,468 - apscheduler.executors.default - ERROR - Job "cleanup_trigger (trigger: date[2025-02-15 14:24:45 UTC], next run at: 2025-02-15 14:24:45 UTC)" raised an exception
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\app\utils\scheduler.py", line 113, in cleanup_trigger
+    logging.info(f"Cleaned up trigger {trigger_id}")
+    ^^^^^^^
+NameError: name 'logging' is not defined. Did you forget to import 'logging'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\apscheduler\executors\base_py3.py", line 30, in run_coroutine_job
+    retval = await job.func(*job.args, **job.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\app\utils\scheduler.py", line 115, in cleanup_trigger
+    logging.error(f"Error cleaning up trigger {trigger_id}: {str(e)}")
+    ^^^^^^^
+NameError: name 'logging' is not defined. Did you forget to import 'logging'
+2025-02-15 19:56:08,873 - root - INFO - Closed MongoDB connection
+2025-02-15 19:56:08,873 - root - INFO - Application shutdown complete
+2025-02-15 19:56:10,802 - root - INFO - Connected to MongoDB
+2025-02-15 19:56:10,817 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:56:10,821 - root - INFO - Database indexes created successfully
+2025-02-15 19:56:10,823 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:56:10,823 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:56:10,826 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:56:10,826 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:56:10,826 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:56:10,826 - root - INFO - Application started successfully
+2025-02-15 19:56:13,970 - root - INFO - Closed MongoDB connection
+2025-02-15 19:56:13,970 - root - INFO - Application shutdown complete
+2025-02-15 19:56:17,808 - root - INFO - Connected to MongoDB
+2025-02-15 19:56:17,817 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 19:56:17,821 - root - INFO - Database indexes created successfully
+2025-02-15 19:56:17,822 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:56:17,822 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 19:56:17,824 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 19:56:17,824 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 19:56:17,825 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 19:56:17,825 - root - INFO - Application started successfully
+2025-02-15 19:56:21,609 - app.utils.logger - INFO - Executing API trigger: 67b0a234baf0abc10a632674
+2025-02-15 19:56:23,133 - httpx - INFO - HTTP Request: POST https://httpbin.org/post "HTTP/1.1 200 OK"
+2025-02-15 19:56:23,134 - app.utils.logger - INFO - API trigger 67b0a234baf0abc10a632674 executed successfully
+2025-02-15 20:11:17,855 - apscheduler.executors.default - INFO - Running job "EventService.archive_events (trigger: interval[0:15:00], next run at: 2025-02-15 20:26:17 IST)" (scheduled at 2025-02-15 20:11:17.821636+05:30)
+2025-02-15 20:11:17,892 - apscheduler.executors.default - INFO - Job "EventService.archive_events (trigger: interval[0:15:00], next run at: 2025-02-15 20:26:17 IST)" executed successfully
+2025-02-15 20:26:17,843 - apscheduler.executors.default - INFO - Running job "EventService.archive_events (trigger: interval[0:15:00], next run at: 2025-02-15 20:41:17 IST)" (scheduled at 2025-02-15 20:26:17.821636+05:30)
+2025-02-15 20:26:17,864 - apscheduler.executors.default - INFO - Job "EventService.archive_events (trigger: interval[0:15:00], next run at: 2025-02-15 20:41:17 IST)" executed successfully
+2025-02-15 20:41:20,833 - apscheduler.executors.default - WARNING - Run time of job "EventService.archive_events (trigger: interval[0:15:00], next run at: 2025-02-15 20:56:17 IST)" was missed by 0:00:03.010946
+2025-02-15 20:53:29,119 - root - INFO - Closed MongoDB connection
+2025-02-15 20:53:29,121 - root - INFO - Application shutdown complete
+2025-02-15 20:53:31,654 - root - INFO - Connected to MongoDB
+2025-02-15 20:53:31,666 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 20:53:31,669 - root - INFO - Database indexes created successfully
+2025-02-15 20:53:31,671 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:53:31,671 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:53:31,674 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 20:53:31,675 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 20:53:31,675 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 20:53:31,675 - root - INFO - Application started successfully
+2025-02-15 20:54:36,235 - root - INFO - Closed MongoDB connection
+2025-02-15 20:54:36,235 - root - INFO - Application shutdown complete
+2025-02-15 20:54:37,938 - root - INFO - Connected to MongoDB
+2025-02-15 20:54:37,971 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 20:54:37,976 - root - INFO - Database indexes created successfully
+2025-02-15 20:54:37,976 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:54:37,978 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:54:37,982 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 20:54:37,983 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 20:54:37,983 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 20:54:37,984 - root - INFO - Application started successfully
+2025-02-15 20:57:48,669 - root - INFO - Closed MongoDB connection
+2025-02-15 20:57:48,669 - root - INFO - Application shutdown complete
+2025-02-15 20:57:50,489 - root - INFO - Connected to MongoDB
+2025-02-15 20:57:50,502 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 20:57:50,507 - root - INFO - Database indexes created successfully
+2025-02-15 20:57:50,507 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:57:50,508 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:57:50,512 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 20:57:50,512 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 20:57:50,512 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 20:57:50,513 - root - INFO - Application started successfully
+2025-02-15 20:58:57,662 - root - INFO - Closed MongoDB connection
+2025-02-15 20:58:57,664 - root - INFO - Application shutdown complete
+2025-02-15 20:58:59,340 - root - INFO - Connected to MongoDB
+2025-02-15 20:58:59,346 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 20:58:59,351 - root - INFO - Database indexes created successfully
+2025-02-15 20:58:59,352 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:58:59,352 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 20:58:59,354 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 20:58:59,354 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 20:58:59,354 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 20:58:59,355 - root - INFO - Application started successfully
+2025-02-15 21:00:22,819 - root - INFO - Connected to MongoDB
+2025-02-15 21:00:22,827 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:00:22,830 - root - INFO - Database indexes created successfully
+2025-02-15 21:00:22,831 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:00:22,831 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:00:22,834 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:00:22,834 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:00:22,835 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:00:22,835 - root - INFO - Application started successfully
+2025-02-15 21:01:50,684 - root - INFO - Closed MongoDB connection
+2025-02-15 21:01:50,685 - root - INFO - Application shutdown complete
+2025-02-15 21:01:50,977 - root - INFO - Closed MongoDB connection
+2025-02-15 21:01:50,978 - root - INFO - Application shutdown complete
+2025-02-15 21:02:47,472 - root - INFO - Connected to MongoDB
+2025-02-15 21:02:47,501 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:02:47,506 - root - INFO - Database indexes created successfully
+2025-02-15 21:02:47,506 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:02:47,506 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:02:47,509 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:02:47,510 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:02:47,513 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:02:47,513 - app.utils.logger - INFO - Application started successfully
+2025-02-15 21:02:47,523 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-3' coro=<EventService.setup_change_stream.<locals>.process_changes() done, defined at C:\Users\shree\EventTrigger\app\services\event_service.py:28> exception=OperationFailure("The $changeStream stage is only supported on replica sets, full error: {'ok': 0.0, 'errmsg': 'The $changeStream stage is only supported on replica sets', 'code': 40573, 'codeName': 'Location40573'}")>
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\app\services\event_service.py", line 29, in process_changes
+    async with cls.change_stream as stream:
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\motor\core.py", line 1927, in __aenter__
+    await self._framework.run_on_executor(loop, self._lazy_init)
+  File "C:\Users\shree\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\motor\core.py", line 1809, in _lazy_init
+    self.delegate = self._target.delegate.watch(**unwrap_kwargs_session(self._kwargs))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\collection.py", line 2617, in watch
+    return CollectionChangeStream(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 149, in __init__
+    self._cursor = self._create_cursor()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 247, in _create_cursor
+    return self._run_aggregation_cmd(session=s, explicit_session=self._session is not None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 241, in _run_aggregation_cmd
+    return self._client._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\_csot.py", line 105, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\mongo_client.py", line 1448, in _retryable_read
+    return func(session, server, sock_info, read_pref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\aggregation.py", line 142, in get_cursor
+    result = sock_info.command(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\pool.py", line 767, in command
+    return command(
+           ^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\network.py", line 166, in command
+    helpers._check_command_response(
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\helpers.py", line 181, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: The $changeStream stage is only supported on replica sets, full error: {'ok': 0.0, 'errmsg': 'The $changeStream stage is only supported on replica sets', 'code': 40573, 'codeName': 'Location40573'}
+2025-02-15 21:02:48,103 - root - INFO - Connected to MongoDB
+2025-02-15 21:02:48,134 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:02:48,139 - root - INFO - Database indexes created successfully
+2025-02-15 21:02:48,140 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:02:48,140 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:02:48,141 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:02:48,142 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:02:48,142 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:02:48,142 - app.utils.logger - INFO - Application started successfully
+2025-02-15 21:02:48,144 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-3' coro=<EventService.setup_change_stream.<locals>.process_changes() done, defined at C:\Users\shree\EventTrigger\app\services\event_service.py:28> exception=OperationFailure("The $changeStream stage is only supported on replica sets, full error: {'ok': 0.0, 'errmsg': 'The $changeStream stage is only supported on replica sets', 'code': 40573, 'codeName': 'Location40573'}")>
+Traceback (most recent call last):
+  File "C:\Users\shree\EventTrigger\app\services\event_service.py", line 29, in process_changes
+    async with cls.change_stream as stream:
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\motor\core.py", line 1927, in __aenter__
+    await self._framework.run_on_executor(loop, self._lazy_init)
+  File "C:\Users\shree\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\motor\core.py", line 1809, in _lazy_init
+    self.delegate = self._target.delegate.watch(**unwrap_kwargs_session(self._kwargs))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\collection.py", line 2617, in watch
+    return CollectionChangeStream(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 149, in __init__
+    self._cursor = self._create_cursor()
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 247, in _create_cursor
+    return self._run_aggregation_cmd(session=s, explicit_session=self._session is not None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\change_stream.py", line 241, in _run_aggregation_cmd
+    return self._client._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\_csot.py", line 105, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\mongo_client.py", line 1448, in _retryable_read
+    return func(session, server, sock_info, read_pref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\aggregation.py", line 142, in get_cursor
+    result = sock_info.command(
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\pool.py", line 767, in command
+    return command(
+           ^^^^^^^^
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\network.py", line 166, in command
+    helpers._check_command_response(
+  File "C:\Users\shree\EventTrigger\.venv\Lib\site-packages\pymongo\helpers.py", line 181, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: The $changeStream stage is only supported on replica sets, full error: {'ok': 0.0, 'errmsg': 'The $changeStream stage is only supported on replica sets', 'code': 40573, 'codeName': 'Location40573'}
+2025-02-15 21:03:38,216 - root - INFO - Closed MongoDB connection
+2025-02-15 21:03:38,216 - app.utils.logger - INFO - Application shutdown successfully
+2025-02-15 21:03:38,307 - root - INFO - Closed MongoDB connection
+2025-02-15 21:03:38,309 - app.utils.logger - INFO - Application shutdown successfully
+2025-02-15 21:03:39,792 - root - INFO - Connected to MongoDB
+2025-02-15 21:03:39,799 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:03:39,804 - root - INFO - Database indexes created successfully
+2025-02-15 21:03:39,804 - app.utils.logger - ERROR - Startup error: name 'scheduler' is not defined
+2025-02-15 21:03:39,948 - root - INFO - Connected to MongoDB
+2025-02-15 21:03:39,956 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:03:39,960 - root - INFO - Database indexes created successfully
+2025-02-15 21:03:39,960 - app.utils.logger - ERROR - Startup error: name 'scheduler' is not defined
+2025-02-15 21:05:02,391 - root - INFO - Connected to MongoDB
+2025-02-15 21:05:02,401 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:05:02,406 - root - INFO - Database indexes created successfully
+2025-02-15 21:05:02,406 - app.utils.logger - ERROR - Startup error: name 'scheduler' is not defined
+2025-02-15 21:05:56,545 - root - INFO - Connected to MongoDB
+2025-02-15 21:05:56,552 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:05:56,601 - root - INFO - Database indexes created successfully
+2025-02-15 21:05:56,601 - app.utils.logger - ERROR - Startup error: name 'scheduler' is not defined
+2025-02-15 21:08:46,054 - root - INFO - Connected to MongoDB
+2025-02-15 21:08:46,067 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:08:46,073 - root - INFO - Database indexes created successfully
+2025-02-15 21:08:46,073 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,075 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,078 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:08:46,078 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:08:46,079 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:08:46,079 - root - INFO - Application started successfully
+2025-02-15 21:08:46,081 - root - INFO - Connected to MongoDB
+2025-02-15 21:08:46,086 - root - INFO - Connected to MongoDB
+2025-02-15 21:08:46,091 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:08:46,097 - root - INFO - Indexes don't exist yet or already dropped: index not found with name [archive_time_ttl], full error: {'ok': 0.0, 'errmsg': 'index not found with name [archive_time_ttl]', 'code': 27, 'codeName': 'IndexNotFound'}
+2025-02-15 21:08:46,098 - root - INFO - Database indexes created successfully
+2025-02-15 21:08:46,099 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,099 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,102 - root - INFO - Database indexes created successfully
+2025-02-15 21:08:46,102 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:08:46,102 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,102 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:08:46,103 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:08:46,103 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-02-15 21:08:46,103 - root - INFO - Application started successfully
+2025-02-15 21:08:46,105 - apscheduler.scheduler - INFO - Added job "EventService.archive_events" to job store "default"
+2025-02-15 21:08:46,105 - apscheduler.scheduler - INFO - Added job "EventService.cleanup_events" to job store "default"
+2025-02-15 21:08:46,106 - apscheduler.scheduler - INFO - Scheduler started
+2025-02-15 21:08:46,106 - root - INFO - Application started successfully
+2025-02-15 21:09:06,557 - root - INFO - Closed MongoDB connection
+2025-02-15 21:09:06,558 - root - INFO - Application shutdown complete
