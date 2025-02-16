@@ -2,18 +2,24 @@
     "version": 2,
     "builds": [
         {
-            "src": "app/main.py",
-            "use": "@vercel/python"
+            "src": "api/asgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "runtime": "python3.9",
+                "handler": "handler"
+            }
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "app/main.py"
+            "dest": "/api/asgi.py"
         }
     ],
     "env": {
-        "MONGODB_URL": "mongodb+srv://shreesha:Jb4fJ4b1wyEdR9Ni@cluster0.v0uri.mongodb.net/",
-        "DATABASE_NAME": "event_trigger_platform"
+        "MONGODB_URL": "mongodb+srv://shreesha:Jb4fJ4b1wyEdR9Ni@cluster0.v0uri.mongodb.net/?retryWrites=true&w=majority",
+        "DATABASE_NAME": "event_triggers",
+        "PYTHONPATH": ".",
+        "PYTHONUNBUFFERED": "1"
     }
 } 

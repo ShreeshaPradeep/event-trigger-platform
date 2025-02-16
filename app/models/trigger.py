@@ -1,8 +1,7 @@
 from enum import Enum
-from typing import Optional, Dict, Literal, Union
+from typing import Optional, Dict, Literal, Union, Any
 from pydantic import BaseModel, Field, HttpUrl, validator, model_validator, AnyUrl
 from datetime import datetime, timezone, time
-import validators
 from urllib.parse import urlparse
 
 class TriggerType(str, Enum):
@@ -12,6 +11,18 @@ class TriggerType(str, Enum):
 class ScheduleType(str, Enum):
     ONE_TIME = "one_time"
     RECURRING = "recurring"
+
+class IntervalType(str, Enum):
+    MINUTES = "minutes"
+    HOURS = "hours"
+    DAYS = "days"
+
+def validate_url(url: str) -> bool:
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except:
+        return False
 
 class TimeConfig(BaseModel):
     hour: int
@@ -60,32 +71,30 @@ class ScheduleConfig(BaseModel):
                 
         return self
 
-class ApiConfig(BaseModel):
+class APIConfig(BaseModel):
     endpoint: str
-    method: Literal["GET", "POST", "PUT", "DELETE"]
-    payload_schema: Dict
-    headers: Optional[Dict] = None
+    method: str = Field(default="POST")
+    payload_schema: Dict[str, Any] = Field(default_factory=dict)
 
     @validator('endpoint')
     def validate_endpoint(cls, v):
-        try:
-            result = urlparse(v)
-            if all([result.scheme, result.netloc]):
-                return v
-            raise ValueError("Invalid URL")
-        except Exception:
-            raise ValueError("Invalid URL format")
+        if not validate_url(v):
+            raise ValueError('Invalid URL format')
+        return v
 
-    def model_dump(self, **kwargs):
-        data = super().model_dump(**kwargs)
-        return data
+    @validator('method')
+    def validate_method(cls, v):
+        valid_methods = ['GET', 'POST', 'PUT', 'DELETE']
+        if v.upper() not in valid_methods:
+            raise ValueError(f'Method must be one of {valid_methods}')
+        return v.upper()
 
 class TriggerCreate(BaseModel):
     name: str
     description: Optional[str] = None
     trigger_type: TriggerType
     schedule_config: Optional[ScheduleConfig] = None
-    api_config: Optional[ApiConfig] = None
+    api_config: Optional[APIConfig] = None
 
     @model_validator(mode='after')
     def validate_configs(self) -> 'TriggerCreate':
@@ -145,7 +154,7 @@ class Trigger(BaseModel):
     description: Optional[str] = None
     trigger_type: TriggerType
     schedule_config: Optional[ScheduleConfig] = None
-    api_config: Optional[ApiConfig] = None
+    api_config: Optional[APIConfig] = None
     is_active: bool = True
     is_deleted: bool = False
     created_at: datetime

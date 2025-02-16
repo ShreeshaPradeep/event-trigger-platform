@@ -1,0 +1,10 @@
+Metadata-Version: 2.2
+Name: event-trigger
+Version: 0.1
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: motor
+Requires-Dist: pytest
+Requires-Dist: pytest-asyncio
+Requires-Dist: httpx
+Dynamic: requires-dist

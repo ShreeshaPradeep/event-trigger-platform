@@ -1,23 +1,23 @@
 import logging
 import sys
-import os
 from datetime import datetime
 
-# Create logs directory if it doesn't exist
-logs_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'logs')
-os.makedirs(logs_dir, exist_ok=True)
-
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.StreamHandler(sys.stdout),  # Console handler
-        logging.FileHandler(
-            os.path.join(logs_dir, f'app_{datetime.now().strftime("%Y%m%d")}.log')
-        )  # File handler
-    ]
-)
+logger = logging.getLogger('app')
+logger.setLevel(logging.INFO)
 
-# Create logger
-logger = logging.getLogger(__name__) 
+# Create console handler
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+
+# Create formatter
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+console_handler.setFormatter(formatter)
+
+# Add handler to logger
+logger.addHandler(console_handler)
+
+# Export logger
+__all__ = ['logger'] 

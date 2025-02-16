@@ -4,6 +4,7 @@ from typing import Optional, List, Dict, Any
 from datetime import datetime
 import logging
 from app.config import settings
+import asyncio
 
 class Database:
     client: AsyncIOMotorClient = None
@@ -14,10 +15,25 @@ class Database:
         """Connect to MongoDB"""
         if cls.client is None:
             try:
-                # Use the Atlas URL from settings
-                cls.client = AsyncIOMotorClient(settings.MONGODB_URL)
-                cls.db = cls.client[settings.DATABASE_NAME]
-                logging.info("Connected to MongoDB Atlas")
+                # Add retry logic
+                for attempt in range(3):
+                    try:
+                        cls.client = AsyncIOMotorClient(
+                            settings.MONGODB_URL,
+                            serverSelectionTimeoutMS=5000,
+                            connectTimeoutMS=5000,
+                            retryWrites=True
+                        )
+                        cls.db = cls.client[settings.DATABASE_NAME]
+                        # Test the connection
+                        await cls.client.admin.command('ping')
+                        logging.info("Connected to MongoDB Atlas")
+                        break
+                    except Exception as e:
+                        if attempt == 2:  # Last attempt
+                            raise
+                        logging.warning(f"Connection attempt {attempt + 1} failed: {e}")
+                        await asyncio.sleep(1)
             except Exception as e:
                 logging.error(f"Failed to connect to MongoDB Atlas: {str(e)}")
                 raise

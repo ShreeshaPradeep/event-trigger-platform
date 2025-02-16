@@ -570,7 +570,7 @@
             });
         });
 
-        const API_BASE_URL = 'https://your-vercel-app-name.vercel.app/api/v1';
+        const API_BASE_URL = window.location.origin + '/api/v1';
 
         // Form handling
         document.getElementById('triggerType').addEventListener('change', function() {

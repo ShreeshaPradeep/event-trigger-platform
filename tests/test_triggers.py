@@ -37,22 +37,13 @@ async def test_create_scheduled_trigger(client):
     assert "trigger_id" in response.json()
 
 @pytest.mark.asyncio
-async def test_create_api_trigger():
-    trigger = TriggerCreate(
-        name="Test API Trigger",
-        description="Test webhook",
-        trigger_type=TriggerType.API,
-        api_config={
-            "endpoint": "https://httpbin.org/post",
-            "method": "POST",
-            "payload_schema": {
-                "message": "string",
-                "priority": "number"
-            }
-        }
-    )
-    trigger_id = await TriggerService.create_trigger(trigger)
-    assert trigger_id is not None
+async def test_create_api_trigger(test_client, sample_trigger_data):
+    response = test_client.post("/api/v1/triggers/", json=sample_trigger_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["name"] == sample_trigger_data["name"]
+    assert data["trigger_type"] == "api"
+    assert "id" in data
 
 async def test_test_trigger(client):
     response = await client.post("/api/v1/triggers/test", json={
@@ -82,29 +73,19 @@ async def test_recurring_trigger(client):
     assert response.status_code == 200
     assert "trigger_id" in response.json()
 
-async def test_update_trigger(client):
-    # First create a trigger
-    create_response = await client.post("/api/v1/triggers/", json={
-        "name": "Update Test",
-        "trigger_type": "scheduled",
-        "schedule_config": {
-            "schedule_type": "one_time",
-            "interval_type": "minutes",
-            "interval_value": 30
-        }
-    })
-    trigger_id = create_response.json()["trigger_id"]
+async def test_update_trigger(test_client, sample_trigger_data):
+    # Create a trigger
+    create_response = test_client.post("/api/v1/triggers/", json=sample_trigger_data)
+    trigger_id = create_response.json()["id"]
     
     # Update the trigger
-    update_response = await client.put(f"/api/v1/triggers/{trigger_id}", json={
-        "name": "Updated Name",
-        "schedule_config": {
-            "schedule_type": "recurring",
-            "interval_type": "hours",
-            "interval_value": 1
-        }
-    })
-    assert update_response.status_code == 200
+    updated_data = sample_trigger_data.copy()
+    updated_data["name"] = "Updated Test Trigger"
+    
+    response = test_client.put(f"/api/v1/triggers/{trigger_id}", json=updated_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["name"] == "Updated Test Trigger"
 
 async def test_delete_trigger(client):
     # First create a trigger
@@ -128,19 +109,13 @@ async def test_delete_trigger(client):
     assert get_response.status_code == 404
 
 @pytest.mark.asyncio
-async def test_create_scheduled_trigger():
-    trigger = TriggerCreate(
-        name="Test Schedule",
-        description="Test one-time schedule",
-        trigger_type=TriggerType.SCHEDULED,
-        schedule_config={
-            "schedule_type": "one_time",
-            "interval_type": "minutes",
-            "interval_value": 30
-        }
-    )
-    trigger_id = await TriggerService.create_trigger(trigger)
-    assert trigger_id is not None
+async def test_create_scheduled_trigger(test_client, sample_schedule_data):
+    response = test_client.post("/api/v1/triggers/", json=sample_schedule_data)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["name"] == sample_schedule_data["name"]
+    assert data["trigger_type"] == "scheduled"
+    assert "id" in data
 
 @pytest.mark.asyncio
 async def test_trigger_lifecycle():
@@ -169,4 +144,26 @@ async def test_trigger_lifecycle():
     
     # Delete
     delete_success = await TriggerService.delete_trigger(trigger_id)
-    assert delete_success 
+    assert delete_success
+
+async def test_get_triggers(test_client, sample_trigger_data):
+    # Create a trigger first
+    create_response = test_client.post("/api/v1/triggers/", json=sample_trigger_data)
+    assert create_response.status_code == 200
+    
+    # Get all triggers
+    response = test_client.get("/api/v1/triggers/")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+
+async def test_execute_api_trigger(test_client, sample_trigger_data):
+    # Create a trigger
+    create_response = test_client.post("/api/v1/triggers/", json=sample_trigger_data)
+    trigger_id = create_response.json()["id"]
+    
+    # Execute the trigger
+    payload = {"message": "test message"}
+    response = test_client.post(f"/api/v1/triggers/{trigger_id}/execute", json=payload)
+    assert response.status_code == 200 
